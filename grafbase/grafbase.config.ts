@@ -35,6 +35,4 @@ export default config({
     providers:[jwt],
     rules:(rules)=>rules.private(),
   }
-
-
 })
