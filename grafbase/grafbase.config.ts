@@ -11,10 +11,6 @@ const User = g.model('User', {
 }).auth((rules) => {
   rules.public().read()
 })
-const jwt = auth.JWT({
-  issuer:"grafbase",
-  secret:g.env('NEXTAUTH_SECRET')
-})
 //@ts-ignore
 const Project = g.model('Project', {
   title: g.string().length({ min: 3 }),
@@ -27,6 +23,12 @@ const Project = g.model('Project', {
 }).auth((rules) => {
   rules.public().read()
   rules.private().create().delete().update()
+})
+
+
+const jwt = auth.JWT({
+  issuer: 'grafbase',
+  secret:  g.env('NEXTAUTH_SECRET')
 })
 
 export default config({
